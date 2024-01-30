@@ -7,7 +7,7 @@ import { useLoaderData } from "@remix-run/react";
  * @returns
  */
 export const headers: HeadersFunction = () => ({
-  "Cache-Control": "public, max-age=3600, s-maxage=3600",
+  "Cache-Control": "public, max-age=5, s-maxage=10",
 });
 
 /**
@@ -25,9 +25,9 @@ export default function Cache() {
   const { serverDate } = useLoaderData<typeof loader>();
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center gap-5">
-      <div>クライアント</div>
+      <div>クライアント(5秒)</div>
       <div>{clientDate}</div>
-      <div>サーバー</div>
+      <div>サーバー(10秒)</div>
       <div>{serverDate}</div>
       <p>public</p>
     </div>
