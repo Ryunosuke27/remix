@@ -27,7 +27,7 @@ export default function Cache() {
       <p>
         Cache-Control: public, s-max-age=10
         <br />
-        サーバー側はキャッシュが返却され、10秒で失効する
+        共有キャッシュが返却される。キャッシュは10秒で失効する。
       </p>
       <div>サーバー</div>
       <div>{serverDate}</div>
