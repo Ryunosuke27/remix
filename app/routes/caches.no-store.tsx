@@ -8,7 +8,7 @@ import { useLoaderData } from "@remix-run/react";
  */
 export const headers: HeadersFunction = () => ({
   // サーバー側で10秒間キャッシュをもつ
-  "Cache-Control": "public,  max-age=3600, s-max-age=1800",
+  "Cache-Control": "no-store",
 });
 
 /**
@@ -20,21 +20,15 @@ export const loader: LoaderFunction = async () => {
   return json({ serverDate });
 };
 
-const clientDate = new Date().toString();
-
 export default function Cache() {
   const { serverDate } = useLoaderData<typeof loader>();
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center gap-5">
       <p>
-        Cache-Control: public, max-age=3600, s-max-age=1800
+        Cache-Control: no-store
         <br />
-        クライアント側は現在の時刻が表示される。
-        <br />
-        サーバー側はキャッシュが返却され、10秒で失効する
+        サーバー側はキャッシュしない
       </p>
-      <div>クライアント</div>
-      <div>{clientDate}</div>
       <div>サーバー</div>
       <div>{serverDate}</div>
     </div>
