@@ -36,8 +36,12 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ]
 
+/**
+ * ルートレイアウト
+ * 全画面の共通定義をまとめる
+ * @returns
+ */
 export default function App() {
-  
   return (
     <html lang="ja">
       <head>
@@ -51,8 +55,6 @@ export default function App() {
         <Meta />
       </head>
       <body>
-        <p>Hello World</p>
-
         {/* ルーティングで埋め込まれるコンポーネント。ルーティングしないなら消してもよい。 */}
         <Outlet />
 
