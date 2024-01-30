@@ -7,8 +7,7 @@ import { useLoaderData } from "@remix-run/react";
  * @returns
  */
 export const headers: HeadersFunction = () => ({
-  // サーバー側で10秒間キャッシュをもつ
-  "Cache-Control": "public, s-max-age=10",
+  "Cache-Control": "private, max-age=10",
 });
 
 /**
@@ -25,9 +24,9 @@ export default function Cache() {
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center gap-5">
       <p>
-        Cache-Control: public, s-max-age=10
+        Cache-Control: private, max-age=100
         <br />
-        共有キャッシュが返却される。キャッシュは10秒で失効する。
+        ローカルキャッシュが返却される。キャッシュは10秒で失効する。
       </p>
       <div>サーバー</div>
       <div>{serverDate}</div>
