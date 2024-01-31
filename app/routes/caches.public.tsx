@@ -1,4 +1,4 @@
-import type { LoaderFunction } from "@remix-run/node";
+import type { HeadersFunction, LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
@@ -6,10 +6,10 @@ import { useLoaderData } from "@remix-run/react";
  * レスポンスヘッダーを設定する
  * @returns
  */
-// export const headers: HeadersFunction = () => ({
-//   // サーバー側で10秒間キャッシュをもつ
-//   "Cache-Control": "public, max-age=10, s-max-age=5",
-// });
+export const headers: HeadersFunction = () => ({
+  // サーバー側で10秒間キャッシュをもつ
+  "Cache-Control": "public, max-age=10, s-max-age=5",
+});
 
 /**
  * 画面読み込みの際のサーバーサイドの処理
@@ -17,10 +17,7 @@ import { useLoaderData } from "@remix-run/react";
  */
 export const loader: LoaderFunction = async () => {
   const serverDate = new Date().toString();
-  return json(
-    { serverDate },
-    { headers: { "Cache-Control": "public, max-age=10, s-max-age=5" } },
-  );
+  return json({ serverDate });
 };
 
 export default function Cache() {
