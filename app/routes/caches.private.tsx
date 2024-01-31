@@ -7,7 +7,7 @@ import { useLoaderData } from "@remix-run/react";
  * @returns
  */
 export const headers: HeadersFunction = () => ({
-  "Cache-Control": "private, max-age=10",
+  "Cache-Control": "private, s-max-age=10",
 });
 
 /**
@@ -24,7 +24,7 @@ export default function Cache() {
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center gap-5">
       <p>
-        Cache-Control: private, max-age=10
+        Cache-Control: private, s-max-age=10
         <br />
         ローカルキャッシュが返却される。キャッシュは10秒で失効する。
       </p>
