@@ -7,6 +7,7 @@ export default function Home() {
       <Link to={`/caches/public`}>public</Link>
       <Link to={`/caches/private`}>private</Link>
       <Link to={`/caches/no-store`}>no-store</Link>
+      <Link to={`/caches/stale-while-revalidate`}>stale-while-revalidate</Link>
     </div>
   );
 }

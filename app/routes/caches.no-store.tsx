@@ -1,6 +1,6 @@
 import type { HeadersFunction, LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
-import { useLoaderData  } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 
 /**
  * レスポンスヘッダーを設定する
@@ -16,7 +16,7 @@ export const headers: HeadersFunction = () => ({
  * @returns
  */
 export const loader: LoaderFunction = async () => {
-  const serverDate = new Date().toString();
+  const serverDate = new Date().toUTCString();
   return json({ serverDate });
 };
 

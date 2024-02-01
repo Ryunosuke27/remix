@@ -16,7 +16,7 @@ export const headers: HeadersFunction = () => ({
  * @returns
  */
 export const loader: LoaderFunction = async () => {
-  const serverDate = new Date().toString();
+  const serverDate = new Date().toUTCString();
   return json({ serverDate });
 };
 
