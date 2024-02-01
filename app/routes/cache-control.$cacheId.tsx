@@ -1,6 +1,6 @@
 import type { HeadersFunction, LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData, useParams } from "@remix-run/react";
 import { CACHE_PATTERN } from "./cache-control._index";
 
 /**
@@ -20,27 +20,28 @@ export const loader: LoaderFunction = async ({ params }) => {
   const cacheControlHeader =
     CACHE_PATTERN.find(({ id }) => params.cacheId === id)?.header || "";
   return json(
-    { cacheId: params.cacheId, serverDate },
+    { serverDate, cacheControlHeader },
     { headers: { "Cache-Control": cacheControlHeader } },
   );
 };
 
 export default function PlayCacheControl() {
-  const { cacheId, serverDate } = useLoaderData<typeof loader>();
+  const { serverDate, cacheControlHeader } = useLoaderData<typeof loader>();
   const clientDate = new Date().toUTCString();
-  const headers = new Headers();
-  console.log(headers.get("Cache-Control"));
+  const params = useParams();
 
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center gap-5">
       <Link to="/cache-control">← Go Back</Link>
-      <h1 className="text-4xl font-bold">{cacheId}</h1>
+      <h1 className="text-4xl font-bold">{params.cacheId}</h1>
+      <div>{cacheControlHeader}</div>
       <button
         className="rounded border px-2 py-1 shadow"
         onClick={() => location.reload()}
       >
         Reload Page
       </button>
+
       <div>
         <span className="mr-2 text-indigo-600">CSR</span>
         {clientDate}
