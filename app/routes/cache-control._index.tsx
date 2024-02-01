@@ -1,6 +1,6 @@
 import { Link } from "@remix-run/react";
 
-const CACHE_PATTERN = [
+export const CACHE_PATTERN = [
   {
     id: "public",
     header: "public, max-age=60, s-max-age=30",
