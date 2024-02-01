@@ -25,15 +25,30 @@ export const loader: LoaderFunction = async ({ params }) => {
   );
 };
 
-export default function Cache() {
+export default function PlayCacheControl() {
   const { cacheId, serverDate } = useLoaderData<typeof loader>();
   const clientDate = new Date().toUTCString();
+  const headers = new Headers();
+  console.log(headers.get("Cache-Control"));
+
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center gap-5">
-      <Link to="/cache-control">← Back to Cache Control Selection</Link>
+      <Link to="/cache-control">← Go Back</Link>
       <h1 className="text-4xl font-bold">{cacheId}</h1>
-      <div>{clientDate}</div>
-      <div>{serverDate}</div>
+      <button
+        className="rounded border px-2 py-1 shadow"
+        onClick={() => location.reload()}
+      >
+        Reload Page
+      </button>
+      <div>
+        <span className="mr-2 text-indigo-600">CSR</span>
+        {clientDate}
+      </div>
+      <div>
+        <span className="mr-2 text-indigo-600">SSR</span>
+        {serverDate}
+      </div>
     </div>
   );
 }

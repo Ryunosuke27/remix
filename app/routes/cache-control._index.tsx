@@ -19,10 +19,10 @@ export const CACHE_PATTERN = [
   },
 ];
 
-export default function Home() {
+export default function CacheControl() {
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center gap-5">
-      <Link to="/">← Back to Play Ground Selection</Link>
+      <Link to="/">← Go Back</Link>
       <h1 className="text-4xl font-bold">Cache Control</h1>
       {CACHE_PATTERN.map(({ id }) => (
         <Link key={id} to={`/cache-control/${id}`}>
