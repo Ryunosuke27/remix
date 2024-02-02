@@ -1,5 +1,5 @@
-import { LinksFunction } from "@remix-run/node"
-import stylesheet from "./tailwind.css"
+import { LinksFunction } from "@remix-run/node";
+import stylesheet from "./tailwind.css";
 import {
   Links,
   LiveReload,
@@ -8,7 +8,7 @@ import {
   Scripts,
   MetaFunction,
   ScrollRestoration,
-} from "@remix-run/react"
+} from "@remix-run/react";
 
 /**
  * メタデータを設定する
@@ -16,17 +16,17 @@ import {
  */
 export const meta: MetaFunction = () => {
   return [
-    { title: "Very cool app | Remix" },
+    { title: "Remix Play Ground" },
     {
       property: "og:title",
-      content: "Very cool app",
+      content: "Remix Play Ground",
     },
     {
       name: "description",
-      content: "This app is the best",
+      content: "Remix Play Ground",
     },
-  ]
-}
+  ];
+};
 
 /**
  * リンクデータを設定する
@@ -34,7 +34,7 @@ export const meta: MetaFunction = () => {
  */
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
-]
+];
 
 /**
  * ルートレイアウト
@@ -68,5 +68,5 @@ export default function App() {
         <LiveReload />
       </body>
     </html>
-  )
+  );
 }
